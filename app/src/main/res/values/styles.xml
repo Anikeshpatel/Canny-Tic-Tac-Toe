@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="myBtnStyle" >
+
+    </style>
+
 </resources>
