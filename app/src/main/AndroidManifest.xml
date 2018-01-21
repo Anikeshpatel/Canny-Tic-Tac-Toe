@@ -17,5 +17,6 @@
         </activity>
 
         <activity android:name=".PlayingController"/>
+        <activity android:name=".BotController"/>
     </application>
 </manifest>

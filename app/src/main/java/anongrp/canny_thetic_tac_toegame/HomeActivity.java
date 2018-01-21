@@ -31,6 +31,6 @@ public class HomeActivity extends AppCompatActivity {
 
     public void play(View view) {
         Intent intent = new Intent(getApplicationContext(),PlayingController.class);
-        startService(intent);
+        startActivity(intent);
     }
 }
