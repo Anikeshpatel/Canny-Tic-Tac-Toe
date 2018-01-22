@@ -230,8 +230,7 @@ public class PlayingController extends AppCompatActivity {
                         player1toast.setView(player1WinToast);
                         player1toast.show();
                         restart();
-                    }
-                    if (player2WiningChance >= 3){
+                    }else if (player2WiningChance >= 3){
                         LayoutInflater player1win = getLayoutInflater();
                         View player1WinToast = player1win.inflate(R.layout.player2win,(ViewGroup) findViewById(R.id.player2toast));
                         Toast player1toast = new Toast(getApplicationContext());
@@ -240,6 +239,18 @@ public class PlayingController extends AppCompatActivity {
                         player1toast.setView(player1WinToast);
                         player1toast.show();
                         restart();
+                    }
+                    else {
+                        if (counter == 9){
+                            LayoutInflater player1win = getLayoutInflater();
+                            View player1WinToast = player1win.inflate(R.layout.matchdraw,(ViewGroup) findViewById(R.id.matchdrawtoast));
+                            Toast player1toast = new Toast(getApplicationContext());
+                            player1toast.setGravity(Gravity.CENTER,0,0);
+                            player1toast.setDuration(Toast.LENGTH_LONG);
+                            player1toast.setView(player1WinToast);
+                            player1toast.show();
+                            restart();
+                        }
                     }
                 }
             }
@@ -263,6 +274,7 @@ public class PlayingController extends AppCompatActivity {
         block9.setText("");
         player1.clear();
         player2.clear();
+        counter=0;
     }
     private void restart(){
         block1.setText("");
@@ -276,5 +288,6 @@ public class PlayingController extends AppCompatActivity {
         block9.setText("");
         player1.clear();
         player2.clear();
+        counter=0;
     }
 }
