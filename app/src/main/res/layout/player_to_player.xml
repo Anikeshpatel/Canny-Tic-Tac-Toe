@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@mipmap/playing_bg">
+
+    <TextView
+        android:id="@+id/block1"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/block4"
+        android:layout_marginBottom="23dp"
+        android:layout_marginEnd="18dp"
+        android:layout_toStartOf="@id/block2"
+        android:onClick="blockAction1"
+        android:textAlignment="center"
+        android:textColor="@color/secondary"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/block2"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/block1"
+        android:layout_alignBottom="@id/block1"
+        android:layout_centerHorizontal="true"
+        android:onClick="blockAction2"
+        android:textAlignment="center"
+        android:textColor="@color/secondary"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/block3"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/block2"
+        android:layout_alignBottom="@id/block2"
+        android:layout_marginStart="11dp"
+        android:layout_toEndOf="@id/block2"
+        android:onClick="blockAction3"
+        android:textAlignment="center"
+        android:textColor="@color/secondary"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/block4"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/block5"
+        android:layout_alignBottom="@id/block5"
+        android:layout_alignStart="@id/block1"
+        android:onClick="blockAction4"
+        android:textAlignment="center"
+        android:textColor="@color/secondary"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/block5"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/block6"
+        android:layout_alignBottom="@id/block6"
+        android:layout_alignStart="@id/block2"
+        android:onClick="blockAction5"
+        android:textAlignment="center"
+        android:textColor="@color/secondary"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/block6"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/block3"
+        android:layout_centerVertical="true"
+        android:onClick="blockAction6"
+        android:textAlignment="center"
+        android:textColor="@color/secondary"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/block7"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/block4"
+        android:layout_alignTop="@id/block8"
+        android:onClick="blockAction7"
+        android:textAlignment="center"
+        android:textColor="@color/secondary"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/block8"
+        android:layout_width="80dp"
+        android:onClick="blockAction8"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/block9"
+        android:layout_alignBottom="@id/block9"
+        android:layout_alignStart="@id/block5"
+        android:textAlignment="center"
+        android:textColor="@color/secondary"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/block9"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/block6"
+        android:layout_below="@id/block6"
+        android:layout_marginTop="22dp"
+        android:onClick="blockAction9"
+        android:textAlignment="center"
+        android:textColor="@color/secondary"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/userChoice1"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="39dp"
+        android:text="@string/x"
+        android:textAlignment="center"
+        android:textColor="@color/secondary"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/userChoice2"
+        android:textColor="@color/secondary"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/userChoice1"
+        android:layout_marginEnd="26dp"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:text="@string/O" />
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="13dp"
+        android:layout_marginStart="13dp"
+        android:onClick="back"
+        android:background="@drawable/backbtn"
+        />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/backBtn"
+        android:layout_alignBottom="@+id/backBtn"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="525dp"
+        android:background="@drawable/replaybtn"
+        android:onClick="replay" />
+
+
+</RelativeLayout>
