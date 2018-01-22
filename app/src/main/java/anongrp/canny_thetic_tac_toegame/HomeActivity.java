@@ -33,4 +33,9 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),PlayingController.class);
         startActivity(intent);
     }
+
+    public void showOption(View view) {
+        Intent intent = new Intent(getApplicationContext(),OptionController.class);
+        startActivity(intent);
+    }
 }

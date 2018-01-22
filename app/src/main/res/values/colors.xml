@@ -5,4 +5,5 @@
     <color name="colorAccent">#ffff8d</color>
     <color name="secondary">#aafff0</color>
     <color name="secondaryDark">#00ffd2</color>
+    <color name="invisible">#00000000</color>
 </resources>
