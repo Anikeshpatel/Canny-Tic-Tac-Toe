@@ -5,4 +5,7 @@
     <string name="play">Play</string>
     <string name="x">X</string>
     <string name="O">O</string>
+    <string name="player_one_win">Player One Win</string>
+    <string name="player_two_win">Player Two Win</string>
+    <string name="canny_win">Canny Win</string>
 </resources>

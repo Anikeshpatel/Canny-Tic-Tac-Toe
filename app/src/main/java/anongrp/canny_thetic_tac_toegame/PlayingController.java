@@ -1,8 +1,12 @@
 package anongrp.canny_thetic_tac_toegame;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +53,13 @@ public class PlayingController extends AppCompatActivity {
         playerNo = -1;
         player1 = new ArrayList<>();
         player2 = new ArrayList<>();
+
+        if (playerNo == -1){
+            userChoice1.setTextColor(Color.parseColor("#aafff0"));
+        }
+        if (playerNo == 1){
+            userChoice2.setTextColor(Color.parseColor("#2a2e37"));
+        }
     }
 
 
@@ -182,6 +193,17 @@ public class PlayingController extends AppCompatActivity {
     }
 
     private void getWinner(){
+
+        if (playerNo == -1){
+            userChoice1.setTextColor(Color.parseColor("#aafff0"));
+            userChoice2.setTextColor(Color.parseColor("#2a2e37"));
+        }
+        if (playerNo == 1){
+            userChoice2.setTextColor(Color.parseColor("#aafff0"));
+            userChoice1.setTextColor(Color.parseColor("#2a2e37"));
+        }
+
+
         counter++;
         if (counter >= 5){
             for (Integer[] i:winningCombination){
@@ -200,11 +222,23 @@ public class PlayingController extends AppCompatActivity {
                     }
 
                     if (player1WiningChance >= 3){
-                        Toast.makeText(getApplicationContext(),"Player One Win",Toast.LENGTH_LONG).show();
+                        LayoutInflater player1win = getLayoutInflater();
+                        View player1WinToast = player1win.inflate(R.layout.player1win,(ViewGroup) findViewById(R.id.player1toast));
+                        Toast player1toast = new Toast(getApplicationContext());
+                        player1toast.setGravity(Gravity.CENTER,0,0);
+                        player1toast.setDuration(Toast.LENGTH_LONG);
+                        player1toast.setView(player1WinToast);
+                        player1toast.show();
                         restart();
                     }
                     if (player2WiningChance >= 3){
-                        Toast.makeText(getApplicationContext(),"Player Two Win",Toast.LENGTH_LONG).show();
+                        LayoutInflater player1win = getLayoutInflater();
+                        View player1WinToast = player1win.inflate(R.layout.player2win,(ViewGroup) findViewById(R.id.player2toast));
+                        Toast player1toast = new Toast(getApplicationContext());
+                        player1toast.setGravity(Gravity.CENTER,0,0);
+                        player1toast.setDuration(Toast.LENGTH_LONG);
+                        player1toast.setView(player1WinToast);
+                        player1toast.show();
                         restart();
                     }
                 }
