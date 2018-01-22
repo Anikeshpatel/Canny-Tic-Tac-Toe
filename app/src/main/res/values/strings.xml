@@ -3,7 +3,6 @@
     <string name="exit">Exit</string>
     <string name="option">Option</string>
     <string name="play">Play</string>
-    <string name="playing_screen">Playing Screen</string>
     <string name="x">X</string>
     <string name="O">O</string>
 </resources>

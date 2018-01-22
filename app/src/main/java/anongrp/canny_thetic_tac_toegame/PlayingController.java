@@ -4,12 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class PlayingController extends AppCompatActivity {
     TextView block1;
@@ -28,8 +27,6 @@ public class PlayingController extends AppCompatActivity {
     private Integer playerNo;
     private List<Integer> player1;
     private List<Integer> player2;
-    private Integer player1WinningChance;
-    private Integer player2WinningChance;
     private Integer counter=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,17 +45,15 @@ public class PlayingController extends AppCompatActivity {
         userChoice1 = findViewById(R.id.userChoice1);
         userChoice2 = findViewById(R.id.userChoice2);
         backBtn = findViewById(R.id.backBtn);
-        winningCombination = new Integer[][]{{1,2,3}, {4,5,6}, {7,8,9}, {1,4,7}, {2,5,8}, {3,6,9}, {1,5,9}, {3,5,7},
-                {2,3,1},{3,1,2},{5,6,4},{6,4,5},{8,9,7},{9,7,8},{4,7,1},{7,1,4},{5,8,2},{8,2,5},{6,9,3},{9,3,6},{5,9,1},{9,5,1},{7,5,3},{5,7,3}};
+        winningCombination = new Integer[][]{{1,2,3}, {4,5,6}, {7,8,9}, {1,4,7}, {2,5,8}, {3,6,9}, {1,5,9}, {3,5,7}};
         playerNo = -1;
         player1 = new ArrayList<>();
         player2 = new ArrayList<>();
-        player1WinningChance = 0;
-        player2WinningChance = 0;
     }
 
 
     public void blockAction1(View view) {
+
         if (playerNo == -1){
             player1.add(1);
             block1.setText(userChoice1.getText());
@@ -189,17 +184,28 @@ public class PlayingController extends AppCompatActivity {
     private void getWinner(){
         counter++;
         if (counter >= 5){
-            for (Integer[] i : winningCombination){
-                for (Integer k:player1){
-                    if (Objects.equals(i, k)){
-
-
+            for (Integer[] i:winningCombination){
+                int player1WiningChance=0;
+                int player2WiningChance=0;
+                for (Integer j:i){
+                    for (Integer l : player1){
+                        if (j.equals(l)){
+                            player1WiningChance++;
+                        }
                     }
-                }
-                for (Integer l:player2){
-                    if (Objects.equals(i, l)){
+                    for (Integer m : player2){
+                        if (j.equals(m)){
+                            player2WiningChance++;
+                        }
+                    }
 
-
+                    if (player1WiningChance >= 3){
+                        Toast.makeText(getApplicationContext(),"Player One Win",Toast.LENGTH_LONG).show();
+                        restart();
+                    }
+                    if (player2WiningChance >= 3){
+                        Toast.makeText(getApplicationContext(),"Player Two Win",Toast.LENGTH_LONG).show();
+                        restart();
                     }
                 }
             }
@@ -209,5 +215,32 @@ public class PlayingController extends AppCompatActivity {
 
     public void back(View view) {
         PlayingController.this.finish();
+    }
+
+    public void replay(View view) {
+        block1.setText("");
+        block2.setText("");
+        block3.setText("");
+        block4.setText("");
+        block5.setText("");
+        block6.setText("");
+        block7.setText("");
+        block8.setText("");
+        block9.setText("");
+        player1.clear();
+        player2.clear();
+    }
+    private void restart(){
+        block1.setText("");
+        block2.setText("");
+        block3.setText("");
+        block4.setText("");
+        block5.setText("");
+        block6.setText("");
+        block7.setText("");
+        block8.setText("");
+        block9.setText("");
+        player1.clear();
+        player2.clear();
     }
 }
