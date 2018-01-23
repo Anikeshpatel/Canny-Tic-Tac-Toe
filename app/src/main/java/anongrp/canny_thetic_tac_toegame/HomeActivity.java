@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -24,18 +25,61 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-    public void quit(View view) {
-        HomeActivity.this.finish();
-    }
+        optionBtn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP){
+                    optionBtn.setScaleX(1.0f);
+                    optionBtn.setScaleY(1.0f);
+                }
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                    optionBtn.setScaleX(0.9f);
+                    optionBtn.setScaleY(0.9f);
+                    Intent intent = new Intent(getApplicationContext(),OptionController.class);
+                    startActivity(intent);
 
-    public void play(View view) {
-        Intent intent = new Intent(getApplicationContext(),PlayingController.class);
-        startActivity(intent);
-    }
+                }
+                return true;
+            }
+        });
 
-    public void showOption(View view) {
-        Intent intent = new Intent(getApplicationContext(),OptionController.class);
-        startActivity(intent);
+        playBtn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP){
+                    playBtn.setScaleX(1.0f);
+                    playBtn.setScaleY(1.0f);
+                }
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                    playBtn.setScaleX(0.9f);
+                    playBtn.setScaleY(0.9f);
+                    Intent intent = new Intent(getApplicationContext(),PlayingController.class);
+                    startActivity(intent);
+
+                }
+                return true;
+            }
+        });
+
+        exitBtn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP){
+                    exitBtn.setScaleX(1.0f);
+                    exitBtn.setScaleY(1.0f);
+                }
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                    exitBtn.setScaleX(0.9f);
+                    exitBtn.setScaleY(0.9f);
+                    exitBtn.setTranslationY(20);
+                    HomeActivity.this.finish();
+                }
+                return true;
+            }
+        });
     }
 }

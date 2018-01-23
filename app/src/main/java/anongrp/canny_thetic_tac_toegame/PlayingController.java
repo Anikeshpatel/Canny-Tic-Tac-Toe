@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -27,6 +28,7 @@ public class PlayingController extends AppCompatActivity {
     TextView userChoice1;
     TextView userChoice2;
     Button backBtn;
+    Button replayBtn;
     private Integer[][] winningCombination;
     private Integer playerNo;
     private List<Integer> player1;
@@ -49,6 +51,7 @@ public class PlayingController extends AppCompatActivity {
         userChoice1 = findViewById(R.id.userChoice1);
         userChoice2 = findViewById(R.id.userChoice2);
         backBtn = findViewById(R.id.backBtn);
+        replayBtn = findViewById(R.id.replayBtn);
         winningCombination = new Integer[][]{{1,2,3}, {4,5,6}, {7,8,9}, {1,4,7}, {2,5,8}, {3,6,9}, {1,5,9}, {3,5,7}};
         playerNo = -1;
         player1 = new ArrayList<>();
@@ -258,24 +261,46 @@ public class PlayingController extends AppCompatActivity {
 
     }
 
-    public void back(View view) {
+    public void back() {
         PlayingController.this.finish();
     }
 
-    public void replay(View view) {
-        block1.setText("");
-        block2.setText("");
-        block3.setText("");
-        block4.setText("");
-        block5.setText("");
-        block6.setText("");
-        block7.setText("");
-        block8.setText("");
-        block9.setText("");
-        player1.clear();
-        player2.clear();
-        counter=0;
+    @Override
+    protected void onStart() {
+        super.onStart();
+        replayBtn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                    replayBtn.setScaleY(0.9f);
+                    replayBtn.setScaleX(0.9f);
+                    restart();
+                }
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP){
+                    replayBtn.setScaleY(1.0f);
+                    replayBtn.setScaleX(1.0f);
+                }
+                return true;
+            }
+        });
+
+        backBtn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                    backBtn.setScaleY(0.9f);
+                    backBtn.setScaleX(0.9f);
+                    back();
+                }
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP){
+                    backBtn.setScaleY(1.0f);
+                    backBtn.setScaleX(1.0f);
+                }
+                return true;
+            }
+        });
     }
+
     private void restart(){
         block1.setText("");
         block2.setText("");
